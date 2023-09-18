@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.bootstrap.min.css"
+    />
     <title>Document</title>
-</head>
-<body>
-    hello World
-</body>
-</html> 
+    <style>
+      body {
+        margin: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/admin/dashboard">goto</a>
+
+    <script>
+      window.addEventListener("load", async (event) => {
+        let hi = await fetch("http://localhost:8000/doctor");
+        let hello = await hi.json();
+
+        hello.forEach(element => {
+           
+            var row = document.createElement("tr");
+            var cell1 = document.createElement("td");
+            var cell2 = document.createElement("td");
+            var cell3 = document.createElement("td");
+            var cell4 = document.createElement("td");
+            var cell5 = document.createElement("td");
+            var cell6 = document.createElement("td");
+
+                        cell1.innerHTML = element.id;
+                        cell2.innerHTML = element.name;
+                        cell3.innerHTML = element.email;
+                        cell4.innerHTML = element.phone;
+                        cell5.innerHTML = element.password;
+                        cell6.innerHTML = `<a href="/admin-dashboard/edit/${element.id}">Edit</a> | <a href="/admin-dashboard/delete/${element.id}">Delete</a>`;
+                        row.appendChild(cell1);
+
+                                                row.appendChild(cell2);
+                                                
+                        row.appendChild(cell3);
+                        row.appendChild(cell4);
+                        row.appendChild(cell5);
+                        row.appendChild(cell6);
+                        document.getElementById("myTable").appendChild(row);
+
+                        
+        });
+      });
+    </script>
+  </body>
+</html>

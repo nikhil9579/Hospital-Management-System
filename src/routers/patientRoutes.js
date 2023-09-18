@@ -2,7 +2,7 @@ const express = require("express");
 const PatientData = require("../models/patients");
 const router = new express.Router();
 
-router.post("/patient", async (req, res) => {
+router.post("/api/patient", async (req, res) => {
   try {
     const patient = new PatientData(req.body);
     const sevedPatient = await patient.save();
@@ -13,7 +13,7 @@ router.post("/patient", async (req, res) => {
   }
 });
 
-router.get("/patient", async (req, res) => {
+router.get("/api/patient", async (req, res) => {
   try {
     const patient = await PatientData.find(req.query);
 
@@ -25,7 +25,7 @@ router.get("/patient", async (req, res) => {
   }
 });
 
-router.patch("/patient", async (req, res) => {
+router.patch("/api/patient", async (req, res) => {
   try {
     const _id = await req.query.id;
 
@@ -41,7 +41,7 @@ router.patch("/patient", async (req, res) => {
   }
 });
 
-router.delete("/patient", async (req, res) => {
+router.delete("/api/patient", async (req, res) => {
   try {
     const _id = await req.query.id;
     const deletedPatient = await PatientData.findByIdAndDelete(_id);

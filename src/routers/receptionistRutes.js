@@ -2,8 +2,7 @@ const express = require("express");
 const ReceptionistData = require("../models/Receptionist");
 const router = new express.Router();
 
-
-router.post("/receptionist", async (req, res) => {
+router.post("/api/receptionist", async (req, res) => {
   try {
     const receptionist = new ReceptionistData(req.body);
     const sevedReceptionist = await receptionist.save();
@@ -14,7 +13,7 @@ router.post("/receptionist", async (req, res) => {
   }
 });
 
-router.get("/receptionist", async (req, res) => {
+router.get("/api/receptionist", async (req, res) => {
   try {
     const receptionist = await ReceptionistData.find(req.query);
 
@@ -26,8 +25,7 @@ router.get("/receptionist", async (req, res) => {
   }
 });
 
-
-router.patch("/receptionist", async (req, res) => {
+router.patch("/api/receptionist", async (req, res) => {
   try {
     const _id = await req.query.id;
 
@@ -47,8 +45,7 @@ router.patch("/receptionist", async (req, res) => {
   }
 });
 
-
-router.delete("/receptionist", async (req, res) => {
+router.delete("/api/receptionist", async (req, res) => {
   try {
     const _id = await req.query.id;
     const deletedReceptionist = await ReceptionistData.findByIdAndDelete(_id);
@@ -59,6 +56,5 @@ router.delete("/receptionist", async (req, res) => {
     res.status(400).send(error);
   }
 });
-
 
 module.exports = router;

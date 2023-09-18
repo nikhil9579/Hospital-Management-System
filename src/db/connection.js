@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb://127.0.0.1:27017/OPD", {
+  .connect("mongodb+srv://hmsATcca:hmsATcca@hms.8jsmbrw.mongodb.net/OPD", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     autoIndex: true,

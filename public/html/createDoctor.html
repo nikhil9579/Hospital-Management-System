@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Doctor Registration Form</title>
+    <link rel="stylesheet" href="/css/form.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="title">Registration</div>
+      <div class="content">
+        <form id="doctorForm">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input
+                type="text"
+                placeholder="Enter your name"
+                required
+                id="name"
+                name="name"
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Username</span>
+              <input
+                type="text"
+                placeholder="Enter your username"
+                required
+                id="username"
+                name="username"
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input
+                type="text"
+                placeholder="Enter your email"
+                required
+                id="email"
+                name="email"
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input
+                type="text"
+                placeholder="Enter your number"
+                required
+                id="phone"
+                name="phone"
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input
+                type="text"
+                placeholder="Enter your password"
+                required
+                id="password"
+                name="password"
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              <input type="text" placeholder="Confirm your password" required />
+            </div>
+          </div>
+          <div class="button">
+            <input id="" type="submit" value="Register" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      const form = document.getElementById("doctorForm");
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const name = document.getElementById("name").value;
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const password = document.getElementById("password").value;
+
+        // if (name.length < 3) {
+        //   alert("Enter Your Full Name");
+        //   return;
+        // } else if (username.length < 6) {
+        //   alert("Username should contain at least 6 characters");
+        //   return;
+        // } else if (email.length < 3) {
+        //   alert("invalid email");
+        //   return;
+        // } else if (phone.length < 3) {
+        //   alert("invalid mobile number");
+        //   return;
+        // } else if (password.length < 3) {
+        //   alert("Password should contain at least 6 characters");
+        //   return;
+        // }
+
+        try {
+          let response = await fetch("/api/doctor", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: name,
+              username: username,
+              email: email,
+              phone: phone,
+              password: password,
+            }),
+          });
+
+          if (response.ok) {
+            // If the POST request is successful, redirect to the home page
+            alert("registered Successfully");
+            window.location.href = "http://localhost:8000/admin/dashboard";
+          } else {
+            // Handle the response if there was an error
+            console.log(JSON.parse(response));
+            console.error("POST request failed");
+          }
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
+      });
+    </script>
+  </body>
+</html>

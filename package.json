@@ -4,8 +4,8 @@
   "description": "Opointment Managament System",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon ./src/server.js -e .html,.css,.js,.hbs",
-    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server/server.js -e .html,.css,.js,.hbs",
+    "start": "node ./src/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwind": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
   },

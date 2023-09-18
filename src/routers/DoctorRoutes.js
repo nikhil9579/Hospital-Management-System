@@ -2,22 +2,25 @@ const express = require("express");
 const DoctorData = require("../models/doctor");
 const router = new express.Router();
 
-router.post("/doctor", async (req, res) => {
+//*<=======================Doctor APIs =====================>
+
+router.post("/api/doctor", async (req, res) => {
   try {
+    console.log(req.body);
     const doctor = new DoctorData(req.body);
     const sevedDoctor = await doctor.save();
     console.log(sevedDoctor);
-    res.status(201).send(sevedDoctor);
+    res.status(201).send();
   } catch (error) {
+    console.log(error);
     res.status(400).send(error);
   }
 });
-0  
-router.get("/doctor", async (req, res) => {
+
+router.get("/api/doctor", async (req, res) => {
   try {
     const doctor = await DoctorData.find(req.query);
 
-    console.log(doctor);
     res.status(201).send(doctor);
   } catch (error) {
     console.log(error);
@@ -25,7 +28,7 @@ router.get("/doctor", async (req, res) => {
   }
 });
 
-router.patch("/doctor", async (req, res) => {
+router.patch("/api/doctor", async (req, res) => {
   try {
     const _id = await req.query.id;
 
@@ -41,16 +44,16 @@ router.patch("/doctor", async (req, res) => {
   }
 });
 
-router.delete("/doctor", async (req, res) => {
+router.delete("/api/doctor", async (req, res) => {
   try {
     const _id = await req.query.id;
     const deletedDoctor = await DoctorData.findByIdAndDelete(_id);
     console.log(deletedDoctor);
     res.status(201).send(deletedDoctor);
-      } catch (error) {
-        console.log(error);
-        res.status(400).send(error);
-      }
-    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(error);
+  }
+});
 
 module.exports = router;

@@ -1,7 +1,7 @@
 <nav>
   <div class="logo-name">
     <div class="logo-image">
-      <img src="assets/images/logo.png" alt="" />
+      <img src="/assets/images/logo.png" alt="" />
     </div>
 
     <span class="logo_name">MediCare</span>
@@ -10,31 +10,31 @@
   <div class="menu-items">
     <ul class="nav-links">
       <li>
-        <a href="/admin-dashboard">
+        <a href="/{{user}}/dashboard">
           <i class="uil uil-estate"></i>
-          <span class="link-name">Dahsboard</span>
+          <span class="link-name">Dashboard</span>
         </a>
       </li>
       <li>
-        <a href="/doctor-dashboard">
+        <a href="/{{user}}/doctor">
           <i class="uil uil-stethoscope"></i>
           <span class="link-name">Doctors</span>
         </a>
       </li>
       <li>
-        <a href="/receptionist-dashboard">
+        <a href="/{{user}}/receptionist">
           <i class="uil uil-user-nurse"></i>
           <span class="link-name">Receptionists</span>
         </a>
       </li>
       <li>
-        <a href="/patient-dashboard">
+        <a href="/{{user}}/patient">
           <i class="uil uil-bed"></i>
           <span class="link-name">Patients</span>
         </a>
       </li>
       <li>
-        <a href="/apoinments">
+        <a href="/{{user}}/apoinments">
           <i class="uil uil-schedule"></i>
           <span class="link-name">Apoinments</span>
         </a>
