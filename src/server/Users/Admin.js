@@ -25,6 +25,7 @@ router.get("/admin/receptionist", (req, res) => {
     user: "admin",
     url: "/receptionist-dashboard/create",
     title: "Receptionist List",
+    getDataApi: "http://localhost:8000/api/receptionist",
   });
 });
 
